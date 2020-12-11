@@ -1,6 +1,5 @@
 from copy import deepcopy
 from itertools import product
-from functools import reduce
 
 def see(rows, col, row, step, nearby_only):
     x, y = step(col, row)
@@ -20,7 +19,7 @@ def change_seat(rows, col, row, nearby_only, threshold):
         return '.'
 
     angles = [a for a in product([-1, 0, 1], [-1, 0, 1]) if a != (0,0)]
-    neighbours_count = reduce(lambda a, b: a+b, [see(rows, col, row, lambda x, y: (x+xi, y+yi), nearby_only) for (xi, yi) in angles])
+    neighbours_count = sum([see(rows, col, row, lambda x, y: (x+xi, y+yi), nearby_only) for (xi, yi) in angles])
 
     if rows[row][col] == 'L':
         return '#' if neighbours_count == 0 else 'L'

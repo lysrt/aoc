@@ -1,5 +1,4 @@
 from collections import Counter
-from functools import reduce
 
 def part1(numbers):
     s = sorted(numbers + [0, max(numbers) + 3])
@@ -8,7 +7,7 @@ def part1(numbers):
 
 def ways_to(n, numbers):
     parents = [x for x in numbers if 1 <= n-x <= 3]
-    return reduce(lambda a, b: a+b, [ways_to(x, numbers) for x in parents]) if parents else 1
+    return sum([ways_to(x, numbers) for x in parents]) if parents else 1
 
 def memoize(func):
     memo = {}
@@ -26,4 +25,5 @@ def main():
 
     print("Part 1:", part1(numbers))
     print("Part 2:", ways_to(max(numbers) + 3, numbers + [0]))
+
 main()
