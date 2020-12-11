@@ -44,7 +44,7 @@ def main():
     with open('input', 'r') as f:
         rows = [list(x.strip()) for x in f.readlines()]
 
-    print("Part 1:", shuffle_seats(rows, nearby_only=True, threshold=4)) # 2386
-    print("Part 2:", shuffle_seats(rows, nearby_only=False, threshold=5)) # 2091
+    print("Part 1:", shuffle_seats(rows, nearby_only=True, threshold=4))
+    print("Part 2:", shuffle_seats(rows, nearby_only=False, threshold=5))
 
 main()
